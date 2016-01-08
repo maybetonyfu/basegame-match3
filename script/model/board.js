@@ -1,9 +1,9 @@
 "use strict"
 
-import { checkMatch } from "checkMatch"
-import { cascade } from "cascade"
-import { generateMotionVector } from "generateMotionVector"
-import { transposeMatrix } from "transposeMatrix"
+import { checkMatch } from "script/helper/checkMatch"
+import { cascade } from "script/helper/cascade"
+import { generateMotionVector } from "script/helper/generateMotionVector"
+import { transposeMatrix } from "script/helper/transposeMatrix"
 
 export default class Board {
     constructor(rows, cols, species) {

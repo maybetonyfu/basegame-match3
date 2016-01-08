@@ -1,6 +1,6 @@
 "use strict"
 
-import {updateBoardTemplate} from "domwrapper"
+import {updateBoardTemplate} from "script/view/boardView"
 
 let findMatch = function (boardModel) { 
     return new Promise(

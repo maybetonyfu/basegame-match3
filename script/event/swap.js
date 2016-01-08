@@ -4,8 +4,8 @@ Handle the event attatched to .board DOM element
 Add clicked item to a size 2 queue and swap if move is legal
 */
 
-import { updateBoardTemplate } from "domwrapper"
-import { prepareBoard } from "boardController"
+import { updateBoardTemplate } from "script/view/boardView"
+import { prepareBoard } from "script/controller/boardController"
 
 let tappedQueue = []
 let swapEventHandler = function (e) {
