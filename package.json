@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "jspm": "^0.16.19"
+  },
+  "scripts": {
+    "test": "jspm run test/*"
   }
 }
