@@ -1,0 +1,13 @@
+{
+  "jspm": {
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4",
+      "tape": "npm:tape@^4.4.0"
+    }
+  },
+  "devDependencies": {
+    "jspm": "^0.16.19"
+  }
+}

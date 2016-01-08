@@ -1,0 +1,8 @@
+.tile {
+    font-size: 40px;
+    display: table-cell;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    cursor: default;
+}
