@@ -1,12 +1,13 @@
 "use strict"
 
 import Board from "script/model/board"
-import { createBoardTemplate, updateBoardTemplate } from "script/view/boardView"
+import { initiateBoardSpecs, createBoardTemplate, updateBoardTemplate } from "script/view/boardView"
 import { swapEventHandler } from "script/event/swap"
 import { prepareBoard } from "script/controller/boardController"
 
-let board = new Board(7,7,5)
+let board = new Board(4,4,3)
 
+initiateBoardSpecs(board)
 createBoardTemplate(board)
 updateBoardTemplate(board)
 

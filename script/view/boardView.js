@@ -24,10 +24,43 @@ let updateBoardTemplate = function  (boardModel) {
         let row = tile.dataset.row
         let col = tile.dataset.col
         if (boardModel.elements[row][col] == -1) {
-            tile.innerHTML = ""
+            tile.style.opacity = 0.01
         }
-        else tile.innerHTML = boardModel.elements[row][col]
+        else {
+            tile.innerHTML = boardModel.elements[row][col]
+            tile.style.opacity = 1
+        }
     }
 }
 
-export { createBoardTemplate,updateBoardTemplate }
+let initiateBoardSpecs = (boardModel) => {
+    let windowWidth = document.documentElement.clientWidth
+    let windowHeight = document.documentElement.clientHeight
+    let windowShorterSide = Math.min(windowWidth, windowHeight)
+    let boardLonggerSide = Math.max(boardModel.rows, boardModel.cols)
+    let tileOuter = windowShorterSide/boardLonggerSide
+    let boardHeight = tileOuter * boardModel.rows
+    let boardWidth = tileOuter * boardModel.cols
+    let tileGutter = 1
+    let tileInner = tileOuter - 2 * tileGutter
+    let style = document.createElement('style')
+    style.type = 'text/css'
+    style.innerHTML = `
+    .board {
+        height: ${boardHeight}px;
+        width: ${boardWidth}px;
+    }
+    .row {
+        height: ${tileOuter}px;
+        width: ${boardWidth}px;
+    }
+    .tile {
+        width: ${tileInner}px;
+        height: ${tileInner}px;
+        margin: ${tileGutter}px;
+    }
+    `
+    document.getElementsByTagName('head')[0].appendChild(style);
+}
+
+export { initiateBoardSpecs,createBoardTemplate,updateBoardTemplate }
