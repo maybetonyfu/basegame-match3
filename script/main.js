@@ -5,7 +5,7 @@ import { initiateBoardSpecs, createBoardTemplate, updateBoardTemplate } from "sc
 import { swapEventHandler } from "script/event/swap"
 import { prepareBoard } from "script/controller/boardController"
 
-let board = new Board(4,4,3)
+let board = new Board(6,6,4)
 
 initiateBoardSpecs(board)
 createBoardTemplate(board)

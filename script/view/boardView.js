@@ -19,6 +19,7 @@ let createBoardTemplate = function  (boardModel) {
 }
 
 let updateBoardTemplate = function  (boardModel) {
+    let symbolList = ["🍏", "🍌", "🍐", "🍒", "🍆", "🍉", "🍇", "🍓"]
     let tiles = document.getElementsByClassName('tile');
     for (let tile of tiles) {
         let row = tile.dataset.row
@@ -27,7 +28,9 @@ let updateBoardTemplate = function  (boardModel) {
             tile.style.opacity = 0.01
         }
         else {
-            tile.innerHTML = boardModel.elements[row][col]
+            let tileValue = boardModel.elements[row][col]
+            let symbol = symbolList[tileValue]
+            tile.innerHTML = symbol
             tile.style.opacity = 1
         }
     }
@@ -43,6 +46,7 @@ let initiateBoardSpecs = (boardModel) => {
     let boardWidth = tileOuter * boardModel.cols
     let tileGutter = 1
     let tileInner = tileOuter - 2 * tileGutter
+    let padding = tileInner / 2
     let style = document.createElement('style')
     style.type = 'text/css'
     style.innerHTML = `
@@ -57,7 +61,9 @@ let initiateBoardSpecs = (boardModel) => {
     .tile {
         width: ${tileInner}px;
         height: ${tileInner}px;
+        line-height: ${tileInner}px;
         margin: ${tileGutter}px;
+        font-size: ${padding}px;
     }
     `
     document.getElementsByTagName('head')[0].appendChild(style);
