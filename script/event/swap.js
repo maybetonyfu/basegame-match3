@@ -28,6 +28,7 @@ let swapEventHandler = function (e) {
         prepareBoard(this)
         tappedQueue = []
     }
+    if (tappedQueue.length === 2) tappedQueue = []
 }
 
 let addToQueue = function (item, queue) {
