@@ -66,6 +66,14 @@ let initiateBoardSpecs = (boardModel) => {
         font-size: ${padding}px;
     }
     `
+    for (let row = 1; row < boardModel.rows; row ++) {
+        let dropDistance = row * tileOuter
+        style.innerHTML += `
+        .drop-${row} {
+            transform: translateY(${dropDistance}px);
+        }
+        `
+    }
     document.getElementsByTagName('head')[0].appendChild(style);
 }
 
