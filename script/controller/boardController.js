@@ -1,56 +1,78 @@
 "use strict"
 
-import {updateBoardTemplate} from "script/view/boardView"
+import { updateBoardTemplate, dropTiles } from "script/view/boardView"
 
-let findMatch = function (boardModel) { 
+let waiting = function (flow) {
     return new Promise(
         resolve => {
-            boardModel.findMatch()
             setTimeout(
-                () => {
-                    resolve(boardModel)
-                },
-                300)
+            () => {
+                resolve({
+                    boardModel: flow.boardModel,
+                    delay: flow.delay
+                })
+            },
+            flow.delay)
         }
     )
 }
 
-let removeMatch = function (boardModel) {
-        return new Promise(
+let findMatch = function (flow) { 
+    return new Promise(
         resolve => {
-            boardModel.removeMatch()
-            updateBoardTemplate(boardModel)
-            setTimeout(
-                () => {
-                    resolve(boardModel)
-                },
-                300)
+            flow.boardModel.findMatch()
+            resolve({
+                boardModel: flow.boardModel,
+                delay: flow.delay
+            })
+        }
+    )
+}
+
+let removeMatch = function (flow) {
+    return new Promise(
+        resolve => {
+            flow.boardModel.removeMatch()
+            updateBoardTemplate(flow.boardModel)
+            resolve({
+                boardModel: flow.boardModel,
+                delay: flow.delay
+            })
         })
     }
 
-let cascadeBoard = function (boardModel) {
-        return new Promise(
+let dropTilesAnimation = function (flow) {
+    return new Promise(
         resolve => {
-            boardModel.cascadeBoard()
-            updateBoardTemplate(boardModel)
-            setTimeout(
-                () => {
-                    resolve(boardModel)
-                },
-                300)
+            dropTiles(flow.boardModel)
+            resolve({
+                boardModel: flow.boardModel,
+                delay: flow.delay
+            })
         })
     }
 
-let refillBoard = function (boardModel) {
-        return new Promise(
+let cascadeBoard = function (flow) {
+    return new Promise(
         resolve => {
-            boardModel.refillBoard()
-            updateBoardTemplate(boardModel)
-            setTimeout(
-                () => {
-                    resolve(boardModel)
-                },
-                300)
+            flow.boardModel.cascadeBoard()
+            updateBoardTemplate(flow.boardModel)
+            resolve({
+                boardModel: flow.boardModel,
+                delay: flow.delay
+            })
+        })
+    }
+
+let refillBoard = function (flow) {
+    return new Promise(
+        resolve => {
+            flow.boardModel.refillBoard()
+            updateBoardTemplate(flow.boardModel)
+            resolve({
+                boardModel: flow.boardModel,
+                delay: flow.delay
+            })
         })
     }
 
@@ -61,9 +83,18 @@ let prepareBoard = function (boardModel) {
     if ( boardModel.match.length === 0 ) {
         return
     }
-    removeMatch(boardModel)
+    
+    waiting({
+        boardModel: boardModel,
+        delay: 250
+    })
+    .then(removeMatch)
+    .then(dropTilesAnimation)
+    .then(waiting)
     .then(cascadeBoard)
+    .then(waiting)
     .then(refillBoard)
+    .then(waiting)
     .then(() => {
         prepareBoard(boardModel)
     })

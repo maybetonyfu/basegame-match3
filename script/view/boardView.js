@@ -24,6 +24,9 @@ let updateBoardTemplate = function  (boardModel) {
     for (let tile of tiles) {
         let row = tile.dataset.row
         let col = tile.dataset.col
+        for (let dropRow = 1; dropRow < boardModel.rows; dropRow ++) {
+            tile.classList.remove(`drop-${dropRow}`)
+        }
         if (boardModel.elements[row][col] == -1) {
             tile.style.opacity = 0.01
         }
@@ -70,11 +73,26 @@ let initiateBoardSpecs = (boardModel) => {
         let dropDistance = row * tileOuter
         style.innerHTML += `
         .drop-${row} {
+            transition: transform 0.5s;
             transform: translateY(${dropDistance}px);
         }
         `
     }
-    document.getElementsByTagName('head')[0].appendChild(style);
+    document.getElementsByTagName('head')[0].appendChild(style)
 }
 
-export { initiateBoardSpecs,createBoardTemplate,updateBoardTemplate }
+let dropTiles = (boardModel) => {
+    let motionMatrix = boardModel.generateMotionMatrix();
+    let tiles = document.getElementsByClassName('tile');
+    for (let tile of tiles) {
+        let row = tile.dataset.row
+        let col = tile.dataset.col
+        let distance = motionMatrix[row][col]
+        if (distance !== 0) {
+            tile.classList.add(`drop-${distance}`)
+        }
+    }
+    
+}
+
+export { initiateBoardSpecs, createBoardTemplate, updateBoardTemplate, dropTiles}
