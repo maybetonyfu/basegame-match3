@@ -86,7 +86,7 @@ let prepareBoard = function (boardModel) {
     
     waiting({
         boardModel: boardModel,
-        delay: 550
+        delay: 150
     })
     .then(removeMatch)
     .then(waiting)

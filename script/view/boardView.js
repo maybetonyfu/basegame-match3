@@ -20,12 +20,13 @@ let createBoardTemplate = function  (boardModel) {
 
 let updateBoardTemplate = function  (boardModel) {
     let symbolList = ["🍏", "🍌", "🍐", "🍒", "🍆", "🍉", "🍇", "🍓"]
-    let tiles = document.getElementsByClassName('tile');
+    let tiles = document.getElementsByClassName('tile')
     for (let tile of tiles) {
         let row = tile.dataset.row
         let col = tile.dataset.col
         for (let dropRow = 1; dropRow < boardModel.rows; dropRow ++) {
             tile.classList.remove(`drop-${dropRow}`)
+            tile.style.opacity = 0
         }
         if (boardModel.elements[row][col] == -1) {
             tile.style.opacity = 0.01
@@ -44,7 +45,7 @@ let initiateBoardSpecs = (boardModel) => {
     let windowHeight = document.documentElement.clientHeight
     let windowShorterSide = Math.min(windowWidth, windowHeight)
     let boardLonggerSide = Math.max(boardModel.rows, boardModel.cols)
-    let tileOuter = windowShorterSide/boardLonggerSide
+    let tileOuter = windowShorterSide / boardLonggerSide
     let boardHeight = tileOuter * boardModel.rows
     let boardWidth = tileOuter * boardModel.cols
     let tileGutter = 1
@@ -73,7 +74,8 @@ let initiateBoardSpecs = (boardModel) => {
         let dropDistance = row * tileOuter
         style.innerHTML += `
         .drop-${row} {
-            transition: transform 0.5s;
+            z-index: 1;
+            transition: transform 0.15s;
             transform: translateY(${dropDistance}px);
         }
         `
@@ -82,8 +84,8 @@ let initiateBoardSpecs = (boardModel) => {
 }
 
 let dropTiles = (boardModel) => {
-    let motionMatrix = boardModel.generateMotionMatrix();
-    let tiles = document.getElementsByClassName('tile');
+    let motionMatrix = boardModel.generateMotionMatrix()
+    let tiles = document.getElementsByClassName('tile')
     for (let tile of tiles) {
         let row = tile.dataset.row
         let col = tile.dataset.col
@@ -95,4 +97,4 @@ let dropTiles = (boardModel) => {
     
 }
 
-export { initiateBoardSpecs, createBoardTemplate, updateBoardTemplate, dropTiles}
+export { initiateBoardSpecs, createBoardTemplate, updateBoardTemplate, dropTiles }
