@@ -86,9 +86,10 @@ let prepareBoard = function (boardModel) {
     
     waiting({
         boardModel: boardModel,
-        delay: 250
+        delay: 550
     })
     .then(removeMatch)
+    .then(waiting)
     .then(dropTilesAnimation)
     .then(waiting)
     .then(cascadeBoard)
