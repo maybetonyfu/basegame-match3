@@ -5,5 +5,5 @@ env:
 node_js:
   - '5'
 before_script:
-  - jspm config registries.github.auth  96445edb742bfbfdf9bdb8764c230de50218558a
+  - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
   - jspm install
