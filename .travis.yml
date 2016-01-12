@@ -1,9 +1,5 @@
 language: node_js
-env:
-  global:
-  - secure: "NQjF+kiuN6Auvx2bF733oCkr6jvb7YuL/SPO+66miS+IKLvJJAS3cXECe8nr7lTrK2C6+n+xGA0iOT/T+AeuF1Cab9SsCpDImCEwIMBhcZ92w/iePRSSSx4oi9QDU6DDhTxtVSovJ35yBXqvgc3R4fCR04ZuemNlIYW8BDJgtp/CGcrG5Ba+sA//UjTNox2moidgxJNylCOMBF4v20+zIksqaJGFdLX0lTAxam02Jv2Bm4uXecP/OiHyTAYhrF82ZLswM+j8sr6gUF278FiDRwCv4o3eAqji2T6QDJ+mWHJUyTedw+g9JfO1YNVjxjmAQW3oFQ2Cp3tvaIhIBTsLvQtvSpBbLkbqPNjptAbasWoLc8kTOMExuizveiL2EtxEg3OrcKydEGd13Y1se2Vr4TUI2g0XvdL4XzODwS21K/deW7cO0pT8dHb2JQ0uFF5S5WJbaN0hlsIAYc+13ntZACrA6enD42IS6dlQrbSHVyc0Wm/Upia+L5vjMj+HbKZblo3sQNUGHjIBOOkfh9Ro9tle7mKI9l3SKuZT+CMQtG0xm2NiUd4zu8O0vTiLafaIkP8xdan6n8UDi81+arz4oThIC/C0K6iF+tWIoq5rMVvnsgqgNZAqZWTbhH2ut9mtXGiaEOBu49F4qGOwAgRCEugg1mSzMGAhYKkpkQRHY4I="
 node_js:
   - '5'
 before_script:
-  - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
   - jspm install
