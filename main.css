@@ -1,26 +1,48 @@
 html,
 body {
-  background-color: #333;
-  overflow: hidden;
-  margin: 0;
+    background-color: #333;
+    overflow: hidden;
+    margin: 0;
 }
 
 .board {
-  background: #333;
-  margin:  auto;
-  margin-top:30px;
+    background: #333;
+    margin:  auto;
+    margin-top:30px;
 }
 
 .row {
-  background: #333;
-  position: relative;
+    background: #333;
+    position: relative;
 }
 
 .tile{
-  color: white;
-  text-align: center;
-  background: #000;
-  display:inline-block;
-  box-shadow: inset 0 0 6px 0 rgba(120, 120, 120, .5);
-  position:relative;
+    color: white;
+    text-align: center;
+    background: #000;
+    display:inline-block;
+    box-shadow: inset 0 0 6px 0 rgba(120, 120, 120, .5);
+    position:relative;
+}
+
+.entry {
+    animation-duration: 1s;
+    opacity: 1;
+    animation-iteration-count: 1;
+    animation-name: round-to-circle;
+    animation-timing-function: ease;
+}
+
+@keyframes round-to-circle {
+    0% {
+        border-radius: 50%;
+        transform: scale(0);
+    }
+    50% {
+        border-radius: 50%;
+    }
+    100% {
+        border-radius: 0%;
+        transform: scale(1);
+    }
 }

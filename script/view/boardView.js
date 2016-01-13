@@ -7,7 +7,7 @@ let createBoardTemplate = function  (boardModel) {
         let div = document.createElement('DIV')
         div.classList.add("row")
         parent.appendChild(div)
-    
+
         for (let col in boardModel.elements[row]) {
             let tile = document.createElement('div')
             tile.classList.add("tile")
@@ -29,13 +29,15 @@ let updateBoardTemplate = function  (boardModel) {
             tile.style.opacity = 0
         }
         if (boardModel.elements[row][col] == -1) {
-            tile.style.opacity = 0.01
+            tile.classList.remove("entry")
+            tile.style.opacity = 0
         }
         else {
             let tileValue = boardModel.elements[row][col]
             let symbol = symbolList[tileValue]
             tile.innerHTML = symbol
             tile.style.opacity = 1
+            tile.classList.add("entry")
         }
     }
 }
@@ -75,7 +77,7 @@ let initiateBoardSpecs = (boardModel) => {
         style.innerHTML += `
         .drop-${row} {
             z-index: 1;
-            transition: transform 0.15s;
+            transition: transform 0.1s;
             transform: translateY(${dropDistance}px);
         }
         `
@@ -94,7 +96,7 @@ let dropTiles = (boardModel) => {
             tile.classList.add(`drop-${distance}`)
         }
     }
-    
+
 }
 
 export { initiateBoardSpecs, createBoardTemplate, updateBoardTemplate, dropTiles }
