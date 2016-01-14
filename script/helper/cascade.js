@@ -8,5 +8,5 @@ export let cascade = function (list) {
         return
     }
     after = list.filter(value => value >= 0)
-    return Array(length - after.length).fill(-1).concat(after)
+    return [...Array(length - after.length).fill(-1), ...after]
 }
