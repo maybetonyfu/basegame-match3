@@ -1,6 +1,6 @@
 "use strict"
 
-import { updateBoardTemplate, dropTiles } from "script/view/boardView"
+import { updateBoardTemplate, dropTiles, updateEntryClass } from "script/view/boardView"
 
 let waiting = function (flow) {
     return new Promise(
@@ -57,6 +57,7 @@ let cascadeBoard = function (flow) {
         resolve => {
             flow.boardModel.cascadeBoard()
             updateBoardTemplate(flow.boardModel)
+            updateEntryClass(flow.boardModel)
             resolve({
                 boardModel: flow.boardModel,
                 delay: flow.delay
@@ -69,6 +70,7 @@ let refillBoard = function (flow) {
         resolve => {
             flow.boardModel.refillBoard()
             updateBoardTemplate(flow.boardModel)
+            updateEntryClass(flow.boardModel)
             resolve({
                 boardModel: flow.boardModel,
                 delay: flow.delay
@@ -80,6 +82,7 @@ let refillBoard = function (flow) {
 
 let prepareBoard = function (boardModel) {
     boardModel.findMatch()
+    updateEntryClass(boardModel)
     if ( boardModel.match.length === 0 ) {
         return
     }

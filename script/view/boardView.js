@@ -117,4 +117,4 @@ let dropTiles = (boardModel) => {
 
 }
 
-export { initiateBoardSpecs, createBoardTemplate, updateBoardTemplate, dropTiles }
+export { initiateBoardSpecs, createBoardTemplate, updateBoardTemplate, dropTiles, updateEntryClass }
