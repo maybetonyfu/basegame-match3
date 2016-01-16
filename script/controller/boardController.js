@@ -17,7 +17,7 @@ let waiting = function (flow) {
     )
 }
 
-let findMatch = function (flow) { 
+let findMatch = function (flow) {
     return new Promise(
         resolve => {
             flow.boardModel.findMatch()
@@ -83,10 +83,10 @@ let prepareBoard = function (boardModel) {
     if ( boardModel.match.length === 0 ) {
         return
     }
-    
+
     waiting({
         boardModel: boardModel,
-        delay: 150
+        delay: 350
     })
     .then(removeMatch)
     .then(waiting)

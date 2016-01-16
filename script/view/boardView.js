@@ -29,7 +29,7 @@ let updateBoardTemplate = function  (boardModel) {
             tile.style.opacity = 0
         }
         if (boardModel.elements[row][col] == -1) {
-            tile.classList.remove("entry")
+            // tile.classList.remove("entry")
             tile.style.opacity = 0
         }
         else {
@@ -37,6 +37,20 @@ let updateBoardTemplate = function  (boardModel) {
             let symbol = symbolList[tileValue]
             tile.innerHTML = symbol
             tile.style.opacity = 1
+            // tile.classList.add("entry")
+        }
+    }
+}
+
+let updateEntryClass = boardModel => {
+    let tiles = document.getElementsByClassName('tile')
+    for (let tile of tiles) {
+        let row = tile.dataset.row
+        let col = tile.dataset.col
+        if (boardModel.elements[row][col] == -1) {
+            tile.classList.remove("entry")
+        }
+        else {
             tile.classList.add("entry")
         }
     }
@@ -74,10 +88,14 @@ let initiateBoardSpecs = (boardModel) => {
     `
     for (let row = 1; row < boardModel.rows; row ++) {
         let dropDistance = row * tileOuter
+        let transitionDelay = row * 10
+        let duration = 300
         style.innerHTML += `
         .drop-${row} {
             z-index: 1;
-            transition: transform 0.1s;
+            transition: transform ${duration}ms;
+            transition-delay: ${transitionDelay}ms;
+            transition-timing-function: cubic-bezier(.67,.21,.56,1);
             transform: translateY(${dropDistance}px);
         }
         `
