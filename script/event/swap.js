@@ -17,13 +17,15 @@ let swapEventHandler = function (e) {
             //better way to handle if click is on board but not tile
             throw new Error("Invalid click on the board")
         }
-        
+
     }
     e.stopPropagation()
     if (isLegalMove(tappedQueue)) {
         let pointA = [tappedQueue[0].dataset.row, tappedQueue[0].dataset.col]
         let pointB = [tappedQueue[1].dataset.row, tappedQueue[1].dataset.col]
+
         this.swap(pointA, pointB)
+
         updateBoardTemplate(this)
         prepareBoard(this)
         tappedQueue = []

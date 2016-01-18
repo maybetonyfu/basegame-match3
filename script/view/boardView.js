@@ -85,12 +85,24 @@ let initiateBoardSpecs = (boardModel) => {
     margin: ${tileGutter}px;
     font-size: ${padding}px;
 }
+.up {
+    animation: bottom-to-top ease-in-out 0.8s;
+}
+.down {
+    animation: top-to-bottom ease-in-out 0.8s;
+}
+.left {
+    animation: right-to-left ease-in-out 0.8s;
+}
+.right {
+    animation: left-to-right ease-in-out 0.8s;
+}
 @keyframes left-to-right {
     0% {
         transform: translateX(0px);
     }
     100 % {
-        transform: translateX(60px);
+        transform: translateX(${tileOuter}px);
     }
 }
 @keyframes right-to-left {
@@ -98,7 +110,7 @@ let initiateBoardSpecs = (boardModel) => {
         transform: translateX(0px);
     }
     100 % {
-        transform: translateX(-60px);
+        transform: translateX(-${tileOuter}px);
     }
 }
 @keyframes top-to-bottom {
@@ -106,7 +118,7 @@ let initiateBoardSpecs = (boardModel) => {
         transform: translateY(0px);
     }
     100 % {
-        transform: translateY(60px);
+        transform: translateY(${tileOuter}px);
     }
 }
 @keyframes bottom-to-top {
@@ -114,7 +126,7 @@ let initiateBoardSpecs = (boardModel) => {
         transform: translateY(0px);
     }
     100 % {
-        transform: translateY(-60px);
+        transform: translateY(-${tileOuter}px);
     }
 }
 `
@@ -125,7 +137,7 @@ let initiateBoardSpecs = (boardModel) => {
         style.innerHTML += `
 .drop-${row} {
     z-index: 1;
-    transition: transform ${duration}ms cubic-bezier(.67,.21,.56,1) ${transitionDelay}ms;
+    transition: transform ${duration}ms ease-in ${transitionDelay}ms;
     transform: translateY(${dropDistance}px);
 }
 `
