@@ -11,6 +11,9 @@ import EventEngine from "script/model/EventEngine"
 
 let board = new Board(6,6,4)
 
+EventEngine.addListener("board.initiate", () => { console.info("board is ready") })
+EventEngine.addListener("document.style", () => { console.info("inline style is ready") })
+
 initiateStyle(board)
 initiateBoard(board)
 updateBoardTemplate(board)
@@ -18,6 +21,5 @@ updateBoardTemplate(board)
 let parentContainer = document.getElementsByClassName('board')[0];
 parentContainer.addEventListener('click', swapEventHandler.bind(board), false);
 
-EventEngine.addListener("board.ready", () => { console.info("ok") })
-EventEngine.emit("board.ready")
+
 //prepareBoard(board)

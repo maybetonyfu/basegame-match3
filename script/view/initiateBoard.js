@@ -1,4 +1,6 @@
-export default boardModel => {
+import EventEngine from "script/model/EventEngine"
+
+export default (boardModel) => {
     let parent = document.createElement("DIV")
     parent.classList.add("board")
     document.body.appendChild(parent)
@@ -15,4 +17,5 @@ export default boardModel => {
             div.appendChild(tile)
         }
     }
+    EventEngine.emit('board.initiate')
 }

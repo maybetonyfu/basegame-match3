@@ -1,4 +1,6 @@
-export default boardModel => {
+import EventEngine from "script/model/EventEngine"
+
+export default (boardModel) => {
 
     // calculate board size specs
     let windowWidth = document.documentElement.clientWidth
@@ -89,4 +91,6 @@ export default boardModel => {
             `
     }
     document.getElementsByTagName('head')[0].appendChild(style)
+
+    EventEngine.emit('document.style')
 }
