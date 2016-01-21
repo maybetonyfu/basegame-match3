@@ -1,12 +1,14 @@
 "use strict"
 
 import Board from "script/model/Board"
-import { swapEventHandler } from "script/event/swap"
+import select from "script/event/select"
 import initiateBoard from "script/view/initiateBoard"
 import initiateStyle from "script/view/initiateStyle"
 import updateBoard from "script/view/updateBoard"
 import EventEngine from "script/model/EventEngine"
+import SelectQueue from "script/model/SelectQueue"
 
+let selectQueue = new SelectQueue()
 
 let board = new Board(6,6,4)
 
@@ -55,4 +57,7 @@ EventEngine.addListener("initiate.updateBoard", () => {
 initiateStyle(board)
 
 let parentContainer = document.getElementsByClassName('board')[0];
-parentContainer.addEventListener('click', swapEventHandler.bind(board), false);
+
+parentContainer.addEventListener('click', e => {
+    select(e, selectQueue)
+}, false);

@@ -1,12 +1,11 @@
 html,
 body {
-    background-color: #333;
     overflow: hidden;
     margin: 0;
 }
 
 .board {
-    background: #333;
+    background: white;
     margin:  auto;
     margin-top:30px;
 }
@@ -40,4 +39,19 @@ body {
     100% {
         transform: scale(1);
     }
+}
+
+@keyframes breath {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

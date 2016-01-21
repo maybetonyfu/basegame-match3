@@ -26,8 +26,8 @@ let swapEventHandler = function (e) {
 
         this.swap(pointA, pointB)
 
-        updateBoardTemplate(this)
-        prepareBoard(this)
+        //updateBoardTemplate(this)
+        //prepareBoard(this)
         tappedQueue = []
     }
     if (tappedQueue.length === 2) tappedQueue = []
