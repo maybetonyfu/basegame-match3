@@ -33,6 +33,38 @@ export default (boardModel) => {
             margin: ${tileGutter}px;
             font-size: ${padding}px;
         }
+        @keyframes left-to-right {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(${tileOuter}px);
+            }
+        }
+        @keyframes right-to-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-${tileOuter}px);
+            }
+        }
+        @keyframes top-to-bottom {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(${tileOuter}px);
+            }
+        }
+        @keyframes bottom-to-top {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-${tileOuter}px);
+            }
+        }
         `
     document.getElementsByTagName('head')[0].appendChild(style)
 

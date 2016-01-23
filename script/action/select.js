@@ -17,8 +17,8 @@ let select = function (e, queue) {
                 queue.elements[1].style.animation = '';
 
                 if(queue.isLegal(adjasent)) {
-                    console.log("Legal!")
-                    queue.reset()
+                    EventEngine.emit("play.swap")
+                    //queue.reset()
                 }
                 else {
                     console.log("Not Legal!")
@@ -29,7 +29,7 @@ let select = function (e, queue) {
             else {
                 tappedItem.style.animation = 'breath 3s ease infinite';
             }
-            console.log(queue)
+            // console.log(queue)
         }
         else {
             //better way to handle if click is on board but not tile

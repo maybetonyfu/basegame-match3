@@ -1,10 +1,11 @@
 "use strict"
 
 import Board from "script/model/Board"
-import select from "script/event/select"
-import initiateBoard from "script/view/initiateBoard"
-import initiateStyle from "script/view/initiateStyle"
-import updateBoard from "script/view/updateBoard"
+import select from "script/action/select"
+import swap from "script/action/swap"
+import initiateBoard from "script/action/initiateBoard"
+import initiateStyle from "script/action/initiateStyle"
+import updateBoard from "script/action/updateBoard"
 import EventEngine from "script/model/EventEngine"
 import SelectQueue from "script/model/SelectQueue"
 
@@ -52,6 +53,14 @@ EventEngine.addListener("initiate.refillBoard", () => {
 EventEngine.addListener("initiate.updateBoard", () => {
     console.info("Rendering")
     updateBoard(board)
+})
+
+
+EventEngine.addListener("play.swap", () => {
+    console.info("Swapping Selected Tiles")
+    let elements = selectQueue.elements
+    swap(elements)
+    selectQueue.reset()
 })
 
 initiateStyle(board)
