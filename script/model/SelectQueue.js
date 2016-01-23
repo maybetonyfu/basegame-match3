@@ -4,26 +4,26 @@
 export default class SelectQueue {
 
     constructor() {
-        let queue = []
-        this.queue = queue
+        let elements = []
+        this.elements = elements
     }
 
     add(item) {
-        if (this.isFull()) this.queue.pop()
-        if (this.queue[0] !== item) {
-            this.queue.push(item)
+        if (this.isFull()) this.elements.pop()
+        if (this.elements[0] !== item) {
+            this.elements.push(item)
         }
     }
     reset() {
-        this.queue = []
+        this.elements = []
     }
 
     isFull() {
-        return this.queue.length === 2
+        return this.elements.length === 2
     }
 
     isLegal(fn) {
         if (!this.isFull()) return false
-        //do something here
+        return fn(this.elements)
     }
 }

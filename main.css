@@ -5,20 +5,18 @@ body {
 }
 
 .board {
-    background: white;
     margin:  auto;
     margin-top:30px;
 }
 
 .row {
-    background: #333;
     position: relative;
 }
 
 .tile{
     color: white;
     text-align: center;
-    background: #000;
+    background: #666;
     display:inline-block;
     position:relative;
     border-radius: 50%;
@@ -47,7 +45,7 @@ body {
     opacity: 1;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
     opacity: 0.6;
   }
   100% {
