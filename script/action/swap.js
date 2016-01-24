@@ -1,9 +1,18 @@
-export default (elements) => {
+import updateBoard from "script/action/updateBoard"
+
+export default (elements, board) => {
+
+
     let elA = elements[0]
     let elB = elements[1]
-    let pointA = [+elA.dataset.row, +elA.dataset.col]
-    let pointB = [+elB.dataset.row, +elB.dataset.col]
+
+    let animationEnd = false
+
+    let pointA = [elA.dataset.row, elA.dataset.col]
+    let pointB = [elB.dataset.row, elB.dataset.col]
+
     let duration = 300
+
 
     if (elA.dataset.row === elB.dataset.row) {
         if (elA.dataset.col < elB.dataset.col) {
@@ -31,6 +40,31 @@ export default (elements) => {
         }
     }
 
-    elA.addEventListener("animationend", () => {}, false);
-    elB.addEventListener("animationend", () => {}, false);
+    elA.addEventListener("animationend", onAnimationEnd, false);
+    elB.addEventListener("animationend", onAnimationEnd, false);
+
+    // elB.addEventListener("animationend", onAnimationEnd, false);
+
+
+    function onAnimationEnd () {
+        if (!animationEnd) {
+            animationEnd = true
+            return
+        }
+
+        elA.style.animation = ""
+        elB.style.animation = ""
+
+        let elCloneA = elA.cloneNode(true);
+        elA.parentNode.replaceChild(elCloneA, elA);
+
+        let elCloneB = elB.cloneNode(true);
+        elB.parentNode.replaceChild(elCloneB, elB);
+
+        console.log("Update swap")
+
+        board.swap(pointA, pointB)
+        updateBoard(board)
+    }
+
 }

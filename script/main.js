@@ -59,7 +59,7 @@ EventEngine.addListener("initiate.updateBoard", () => {
 EventEngine.addListener("play.swap", () => {
     console.info("Swapping Selected Tiles")
     let elements = selectQueue.elements
-    swap(elements)
+    swap(elements, board)
     selectQueue.reset()
 })
 
