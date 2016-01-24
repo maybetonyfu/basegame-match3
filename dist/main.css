@@ -1,0 +1,64 @@
+html,
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+.board {
+    margin:  auto;
+    margin-top:30px;
+}
+
+.row {
+    position: relative;
+}
+
+.tile{
+    color: white;
+    text-align: center;
+    background-color: #666;
+    display:inline-block;
+    position:relative;
+    border-radius: 50%;
+}
+
+.entry {
+    animation-duration: 1s;
+    opacity: 1;
+    animation-iteration-count: 1;
+    animation-name: grow;
+    animation-timing-function: ease;
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes breath {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes mark {
+    0% {
+        background-color: #666;
+    }
+    100% {
+        background-color: #26A65B;
+    }
+}
