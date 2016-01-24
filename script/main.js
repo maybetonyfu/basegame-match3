@@ -7,6 +7,8 @@ import initiateBoard from "script/action/initiateBoard"
 import initiateStyle from "script/action/initiateStyle"
 import updateBoard from "script/action/updateBoard"
 import markMatch from "script/action/markMatch"
+import dropTiles from "script/action/dropTiles"
+import refillBoard from "script/action/refillBoard"
 import EventEngine from "script/model/EventEngine"
 import SelectQueue from "script/model/SelectQueue"
 
@@ -76,6 +78,16 @@ EventEngine.addListener("play.findMatch", () => {
         console.info("No Match Found Game Continue")
         //EventEngine.emit("initiate.updateBoard")
     }
+})
+
+EventEngine.addListener("play.dropTiles", () => {
+    console.info("Now drop floating tiles")
+    dropTiles(board)
+})
+
+EventEngine.addListener("play.refillBoard", () => {
+    console.info("Now refill some new tiles")
+    refillBoard(board)
 })
 
 initiateStyle(board)

@@ -18,26 +18,26 @@ export default (elements, board) => {
     if (elA.dataset.row === elB.dataset.row) {
         if (elA.dataset.col < elB.dataset.col) {
             console.log("horizontal")
-            elA.style.animation = "left-to-right 1s ease"
-            elB.style.animation = "right-to-left 1s ease"
+            elA.style.animation = `left-to-right ${duration}ms ease`
+            elB.style.animation = `right-to-left ${duration}ms ease`
         }
         else {
             console.log("horizontal reverse")
-            elA.style.animation = "right-to-left 1s ease"
-            elB.style.animation = "left-to-right 1s ease"
+            elA.style.animation = `right-to-left ${duration}ms ease`
+            elB.style.animation = `left-to-right ${duration}ms ease`
         }
     }
 
     if (elA.dataset.col === elB.dataset.col) {
         if (elA.dataset.row < elB.dataset.row) {
             console.log("vertical")
-            elA.style.animation = "top-to-bottom 1s ease"
-            elB.style.animation = "bottom-to-top 1s ease"
+            elA.style.animation = `top-to-bottom ${duration}ms ease`
+            elB.style.animation = `bottom-to-top ${duration}ms ease`
         }
         else {
             console.log("vertical reverse")
-            elA.style.animation = "bottom-to-top 1s ease"
-            elB.style.animation = "top-to-bottom 1s ease"
+            elA.style.animation = `bottom-to-top ${duration}ms ease`
+            elB.style.animation = `top-to-bottom ${duration}ms ease`
         }
     }
 

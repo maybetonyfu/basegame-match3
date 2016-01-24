@@ -66,6 +66,20 @@ export default (boardModel) => {
             }
         }
         `
+
+    for (let row = 1; row < boardModel.rows; row ++) {
+        let dropDistance = row * tileOuter
+        style.innerHTML += `
+        @keyframes drop-${row} {
+            0% {
+                ransform: translateY(0px);
+            }
+            100% {
+                transform: translateY(${dropDistance}px);
+            }
+        }
+        `
+    }
     document.getElementsByTagName('head')[0].appendChild(style)
 
     EventEngine.emit('initiate.board')

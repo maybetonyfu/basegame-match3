@@ -1,4 +1,5 @@
 import updateBoard from "script/action/updateBoard"
+import EventEngine from "script/model/EventEngine"
 
 export default board => {
 
@@ -11,7 +12,7 @@ export default board => {
 
         let tile = document.getElementsByClassName(`row-${row} col-${col}`)[0]
 
-        tile.style.animation = "mark 1s ease"
+        tile.style.animation = "mark 300ms ease"
         matchedElements.add(tile)
 
         tile.addEventListener("animationend", onAnimationEnd, false)
@@ -27,9 +28,10 @@ export default board => {
         currentElement.parentNode.replaceChild(elClone, currentElement);
 
         if (matchedElements.size === 0) {
-            //emit event
+
             board.removeMatch()
             updateBoard(board)
+            EventEngine.emit("play.dropTiles")
 
         }
     }
