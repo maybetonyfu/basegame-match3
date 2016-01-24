@@ -12,6 +12,8 @@ export default (boardModel) => {
             tile.classList.add("tile")
             tile.dataset.row = row
             tile.dataset.col = col
+            tile.classList.add(`row-${row}`)
+            tile.classList.add(`col-${col}`)
             div.appendChild(tile)
         }
     }

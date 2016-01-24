@@ -1,4 +1,5 @@
 import updateBoard from "script/action/updateBoard"
+import EventEngine from "script/model/EventEngine"
 
 export default (elements, board) => {
 
@@ -65,6 +66,7 @@ export default (elements, board) => {
 
         board.swap(pointA, pointB)
         updateBoard(board)
+        EventEngine.emit("play.findMatch")
     }
 
 }

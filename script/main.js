@@ -6,6 +6,7 @@ import swap from "script/action/swap"
 import initiateBoard from "script/action/initiateBoard"
 import initiateStyle from "script/action/initiateStyle"
 import updateBoard from "script/action/updateBoard"
+import markMatch from "script/action/markMatch"
 import EventEngine from "script/model/EventEngine"
 import SelectQueue from "script/model/SelectQueue"
 
@@ -61,6 +62,20 @@ EventEngine.addListener("play.swap", () => {
     let elements = selectQueue.elements
     swap(elements, board)
     selectQueue.reset()
+})
+
+EventEngine.addListener("play.findMatch", () => {
+    console.info("Finding Match")
+    board.findMatch()
+    if(board.match.length !== 0) {
+        console.info("Match Found Proceeding Next Process")
+        markMatch(board)
+        //EventEngine.emit("initiate.removeMatch")
+    }
+    else {
+        console.info("No Match Found Game Continue")
+        //EventEngine.emit("initiate.updateBoard")
+    }
 })
 
 initiateStyle(board)

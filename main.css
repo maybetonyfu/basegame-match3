@@ -16,7 +16,7 @@ body {
 .tile{
     color: white;
     text-align: center;
-    background: #666;
+    background-color: #666;
     display:inline-block;
     position:relative;
     border-radius: 50%;
@@ -45,11 +45,20 @@ body {
     opacity: 1;
   }
   50% {
-    transform: scale(1.1);
-    opacity: 0.6;
+    transform: scale(1.03);
+    opacity: 0.8;
   }
   100% {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+@keyframes mark {
+    0% {
+        background-color: #666;
+    }
+    100% {
+        background-color: #26A65B;
+    }
 }
