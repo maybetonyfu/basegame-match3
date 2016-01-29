@@ -33,36 +33,84 @@ export default (boardModel) => {
             margin: ${tileGutter}px;
             font-size: ${padding}px;
         }
-        @keyframes left-to-right {
+        @-webkit-keyframes left-to-right {
             0% {
-                transform: translateX(0);
+                -webkit-transform: translateX(0);
+                        transform: translateX(0);
             }
             100% {
-                transform: translateX(${tileOuter}px);
+                -webkit-transform: translateX(${tileOuter}px);
+                        transform: translateX(${tileOuter}px);
+            }
+        }
+        @keyframes left-to-right {
+            0% {
+                -webkit-transform: translateX(0);
+                        transform: translateX(0);
+            }
+            100% {
+                -webkit-transform: translateX(${tileOuter}px);
+                        transform: translateX(${tileOuter}px);
+            }
+        }
+        @-webkit-keyframes right-to-left {
+            0% {
+                -webkit-transform: translateX(0);
+                        transform: translateX(0);
+            }
+            100% {
+                -webkit-transform: translateX(-${tileOuter}px);
+                        transform: translateX(-${tileOuter}px);
             }
         }
         @keyframes right-to-left {
             0% {
-                transform: translateX(0);
+                -webkit-transform: translateX(0);
+                        transform: translateX(0);
             }
             100% {
-                transform: translateX(-${tileOuter}px);
+                -webkit-transform: translateX(-${tileOuter}px);
+                        transform: translateX(-${tileOuter}px);
+            }
+        }
+        @-webkit-keyframes top-to-bottom {
+            0% {
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
+            }
+            100% {
+                -webkit-transform: translateY(${tileOuter}px);
+                        transform: translateY(${tileOuter}px);
             }
         }
         @keyframes top-to-bottom {
             0% {
-                transform: translateY(0);
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
             }
             100% {
-                transform: translateY(${tileOuter}px);
+                -webkit-transform: translateY(${tileOuter}px);
+                        transform: translateY(${tileOuter}px);
+            }
+        }
+        @-webkit-keyframes bottom-to-top {
+            0% {
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
+            }
+            100% {
+                -webkit-transform: translateY(-${tileOuter}px);
+                        transform: translateY(-${tileOuter}px);
             }
         }
         @keyframes bottom-to-top {
             0% {
-                transform: translateY(0);
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
             }
             100% {
-                transform: translateY(-${tileOuter}px);
+                -webkit-transform: translateY(-${tileOuter}px);
+                        transform: translateY(-${tileOuter}px);
             }
         }
         `
@@ -70,12 +118,22 @@ export default (boardModel) => {
     for (let row = 1; row < boardModel.rows; row ++) {
         let dropDistance = row * tileOuter
         style.innerHTML += `
-        @keyframes drop-${row} {
-            0% {
+        @-webkit-keyframes drop-${row} {
+             0% {
                 ransform: translateY(0px);
             }
             100% {
-                transform: translateY(${dropDistance}px);
+                -webkit-transform: translateY(${dropDistance}px);
+                        transform: translateY(${dropDistance}px);
+            }
+        }
+        @keyframes drop-${row} {
+             0% {
+                ransform: translateY(0px);
+            }
+            100% {
+                -webkit-transform: translateY(${dropDistance}px);
+                        transform: translateY(${dropDistance}px);
             }
         }
         `

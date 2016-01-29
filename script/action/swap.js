@@ -20,11 +20,15 @@ export default (elements, board) => {
             console.log("horizontal")
             elA.style.animation = `left-to-right ${duration}ms ease`
             elB.style.animation = `right-to-left ${duration}ms ease`
+            elA.style.webkitAnimation = `left-to-right ${duration}ms ease`
+            elB.style.webkitAnimation = `right-to-left ${duration}ms ease`
         }
         else {
             console.log("horizontal reverse")
             elA.style.animation = `right-to-left ${duration}ms ease`
             elB.style.animation = `left-to-right ${duration}ms ease`
+            elA.style.webkitAnimation = `right-to-left ${duration}ms ease`
+            elB.style.webkitAnimation = `left-to-right ${duration}ms ease`
         }
     }
 
@@ -33,11 +37,15 @@ export default (elements, board) => {
             console.log("vertical")
             elA.style.animation = `top-to-bottom ${duration}ms ease`
             elB.style.animation = `bottom-to-top ${duration}ms ease`
+            elA.style.webkitAnimation = `top-to-bottom ${duration}ms ease`
+            elB.style.webkitAnimation = `bottom-to-top ${duration}ms ease`
         }
         else {
             console.log("vertical reverse")
             elA.style.animation = `bottom-to-top ${duration}ms ease`
             elB.style.animation = `top-to-bottom ${duration}ms ease`
+            elA.style.webkitAnimation = `bottom-to-top ${duration}ms ease`
+            elB.style.webkitAnimation = `top-to-bottom ${duration}ms ease`
         }
     }
 
@@ -55,6 +63,8 @@ export default (elements, board) => {
 
         elA.style.animation = ""
         elB.style.animation = ""
+        elA.style.webkitAnimation = ""
+        elB.style.webkitAnimation = ""
 
         let elCloneA = elA.cloneNode(true);
         elA.parentNode.replaceChild(elCloneA, elA);

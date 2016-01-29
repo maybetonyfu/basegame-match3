@@ -13,6 +13,8 @@ export default board => {
         let tile = document.getElementsByClassName(`row-${row} col-${col}`)[0]
 
         tile.style.animation = "mark 300ms ease"
+        tile.style.webkitAnimation = "mark 300ms ease"
+
         matchedElements.add(tile)
 
         tile.addEventListener("animationend", onAnimationEnd, false)
@@ -20,7 +22,9 @@ export default board => {
 
     function onAnimationEnd(e) {
         let currentElement = e.target
+
         currentElement.style.animation = ""
+        currentElement.style.webkitAnimation = ""
 
         matchedElements.delete(currentElement)
 

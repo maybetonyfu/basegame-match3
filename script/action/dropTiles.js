@@ -14,7 +14,10 @@ export default board => {
         let dropDistance = MotionMatrix[row][col]
 
         if (dropDistance !== 0) {
+
             tile.style.animation = `drop-${dropDistance} 550ms ease`
+            tile.style.webkitAnimation = `drop-${dropDistance} 550ms ease`
+
             tile.addEventListener("animationend", onAnimationEnd, false)
             dropTiles.add(tile)
         }
@@ -27,7 +30,9 @@ export default board => {
     function onAnimationEnd (e) {
         console.log("element drop finish")
         let currentElement = e.target
+
         currentElement.style.animation = ""
+        currentElement.style.webkitAnimation = ""
 
         dropTiles.delete(currentElement)
 

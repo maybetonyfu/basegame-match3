@@ -22,36 +22,71 @@ body {
     border-radius: 50%;
 }
 
-.entry {
-    animation-duration: 1s;
-    opacity: 1;
-    animation-iteration-count: 1;
-    animation-name: grow;
-    animation-timing-function: ease;
+@-webkit-keyframes grow {
+    0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
 }
 
 @keyframes grow {
     0% {
-        transform: scale(0);
+        -webkit-transform: scale(0);
+                transform: scale(0);
     }
     100% {
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
     }
+}
+
+@-webkit-keyframes breath {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: scale(1.03);
+            transform: scale(1.03);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes breath {
   0% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
     opacity: 1;
   }
   50% {
-    transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+            transform: scale(1.03);
     opacity: 0.8;
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
     opacity: 1;
   }
+}
+
+@-webkit-keyframes mark {
+    0% {
+        background-color: #666;
+    }
+    100% {
+        background-color: #26A65B;
+    }
 }
 
 @keyframes mark {

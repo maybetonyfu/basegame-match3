@@ -14,7 +14,9 @@ let select = function (e, queue) {
 
             if (queue.isFull()) {
                 queue.elements[0].style.animation = '';
+                queue.elements[0].style.webkitAnimation = '';
                 queue.elements[1].style.animation = '';
+                queue.elements[1].style.webkitAnimation = '';
 
                 if(queue.isLegal(adjasent)) {
                     EventEngine.emit("play.swap")
@@ -28,6 +30,7 @@ let select = function (e, queue) {
             }
             else {
                 tappedItem.style.animation = 'breath 3s ease infinite';
+                tappedItem.style.webkitAnimation = 'breath 3s ease infinite';
             }
             // console.log(queue)
         }

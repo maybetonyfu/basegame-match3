@@ -9,7 +9,10 @@ export default board => {
         let row = tile.dataset.row
         let col = tile.dataset.col
         if (board.elements[row][col] === -1) {
+
             tile.style.animation = "grow ease 600ms"
+            tile.style.webkitAnimation = "grow ease 600ms"
+
             regeneratedTiles.add(tile)
             tile.addEventListener("animationend", onAnimationEnd, false)
         }
@@ -20,7 +23,9 @@ export default board => {
     function onAnimationEnd (e) {
         console.log("element refill finish")
         let currentElement = e.target
+
         currentElement.style.animation = ""
+        currentElement.style.webkitAnimation = ""
 
         regeneratedTiles.delete(currentElement)
 
